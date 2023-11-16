@@ -1,4 +1,4 @@
-from typing import Optional, List, Dict
+from typing import Optional, List, Dict, Type
 
 from gecko import RedisModel
 
@@ -26,7 +26,7 @@ class Initializer:
         Takes in a model and returns all attributes and associated types.
 
         :param model: RedisModel - Database model.
-        :return List[field, type]
+        :return Dict[field, type]
         """
         fields_with_types = model.__annotations__
 
@@ -34,6 +34,22 @@ class Initializer:
         for field, field_type in fields_with_types.items():
             item[field] = field_type
         return item
+    
+    @classmethod
+    def check_index_exist(cls, field: str, model_name: str, connection_string: str) -> bool:
+        """
+        Check if a particular model field is included in index.
+
+        :param field: str - Model field to check.
+        :param model_name: str - Model of field.
+        :connection_string: str - Database connection string.
+        :return bool
+        """
+    
+    @classmethod
+    def read_index():
+        pass
+        
 
 
 async def index_db(
